@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  Enter your City :  <input type="text" id="city"><br>
+    <button onclick="weather()">Submit</button><br>
+    <span id="temp"></span><br>
+    <span></span><br>
+    <span></span><br>
+    <span></span>
+    <script>
+      async  function weather(){
+           var city = document.getElementById("city").value;
+           var api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5760fd2b56df38275f29a81302c3deb8`;
+         var result = await  fetch(api);
+         var data = await result.json();
+         document.getElementById("temp").innerHTML = `Weather in ${city} : ${Math.round(data.main.temp -273)}° C`;
+        }
+    </script>
+</body>
+</html>
